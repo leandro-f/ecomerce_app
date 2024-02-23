@@ -1,39 +1,39 @@
-import React from 'react';
-import { Pressable, Text, StyleSheet, View } from 'react-native';
+import React from "react";
+import { Pressable, Text, StyleSheet } from "react-native";
+import { colors } from "../global/colors"; 
 
-const CategoryItem = ({ category, setCategorySelected }) => {
+const CategoryItem = ({ category, navigation }) => {
   return (
-    <View style={styles.buttonContainer}>
-      <Pressable style={styles.button} onPress={() => setCategorySelected(category)}>
-        <Text style={styles.text}>{category}</Text>
-      </Pressable>
-    </View>
+    <Pressable
+      onPress={() => navigation.navigate("ItemListCategories", { category: category })}
+      style={styles.button} 
+>
+  <Text style={styles.text}>{category}</Text>
+</Pressable>
   );
 };
 
 const styles = StyleSheet.create({
-  buttonContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginVertical: 15, 
-  },
   button: {
-    backgroundColor: '#007bff', 
+    elevation: 3,
+    backgroundColor: colors.blue_300,
+    borderRadius: 20,
     paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 20, 
+    paddingHorizontal: 12,
+    marginVertical: 6,
+    alignItems: "center",
+    justifyContent: "center",
     width: 250, 
-    shadowRadius: 5,
-    shadowOffset: { width: 1, height: 1 },
-    alignItems: 'center', 
+    shadowRadius: 4,
+    shadowOpacity: 0.3,
+    shadowColor: "#000",
+    shadowOffset: { height: 2, width: 0 },
   },
   text: {
-    color: '#ffffff', 
+    color: "white",
     fontSize: 18,
-    textAlign: 'center',
+    fontWeight: "bold",
   },
 });
-
 
 export default CategoryItem;

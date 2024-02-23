@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
-import allProducts from '../data/products.json';
-import ProductItem from '../components/ProductItem';
-import Search from '../components/Search';
+import { useEffect, useState } from "react";
+import { View, FlatList, StyleSheet, Text, Pressable } from "react-native";
+import allProducts from "../data/products.json";
+import ProductItem from "../components/ProductItem";
+import Search from "../components/Search";
 
-function ItemListCategories({ category }) {
-  const [products, setProducts] = useState(allProducts.filter((product) => product.category === category));
-  const [keyword, setKeyword] = useState("");
+function ItemListCategories({ navigation, route }) {
+  const { category } = route.params;
+  const [products, setProducts] = useState([]);
+  const [keyword, setKeyword] = useState('');
 
   useEffect(() => {
 
-    const filteredProducts = allProducts
-      .filter(product => product.category === category)
-      .filter(product => keyword === "" || product.name.toLowerCase().includes(keyword.toLowerCase()));
-    
+    const filteredProducts = allProducts.filter((product) => {
+      return (
+        product.category === category &&
+        product.name.toLowerCase().includes(keyword.toLowerCase())
+      );
+    });
     setProducts(filteredProducts);
   }, [category, keyword]);
 
@@ -22,14 +25,14 @@ function ItemListCategories({ category }) {
       <Search onSearch={setKeyword} />
       <FlatList
         data={products}
-        renderItem={({ item }) => <ProductItem product={item} />}
+        renderItem={({ item }) => <ProductItem product={item} navigation={navigation} />}
         keyExtractor={(item) => item.id}
-        style={styles.list}
       />
     </View>
   );
 }
 
+export default ItemListCategories;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -41,4 +44,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ItemListCategories;

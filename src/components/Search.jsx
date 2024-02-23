@@ -1,21 +1,17 @@
-import { useState } from "react";
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
+import React, { useState } from 'react';
+import { StyleSheet, TextInput, View, Pressable } from 'react-native';
+import { AntDesign, Entypo } from '@expo/vector-icons';
 
 const Search = ({ onSearch }) => {
-  const [input, setInput] = useState("");
-
+  const [input, setInput] = useState('');
 
   const handleSearch = () => {
-    if (input) {
-      onSearch(input);
-    }
+    onSearch(input);
   };
 
-
-  const removeInput = () => {
-    setInput("");
+  const clearInput = () => {
+    setInput('');
+    onSearch(''); 
   };
 
   return (
@@ -24,13 +20,15 @@ const Search = ({ onSearch }) => {
         <TextInput
           style={styles.input}
           value={input}
-          onChangeText={setInput}
+          onChangeText={(text) => setInput(text)}
           placeholder="Buscar producto..."
+          returnKeyType="search"
+          onSubmitEditing={handleSearch} 
         />
         <Pressable onPress={handleSearch}>
           <AntDesign name="search1" size={25} color="black" />
         </Pressable>
-        <Pressable onPress={removeInput}>
+        <Pressable onPress={clearInput}>
           <Entypo name="circle-with-cross" size={25} color="black" />
         </Pressable>
       </View>
@@ -39,6 +37,7 @@ const Search = ({ onSearch }) => {
 };
 
 export default Search;
+
 
 const styles = StyleSheet.create({
   container: {

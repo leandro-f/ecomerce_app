@@ -1,23 +1,36 @@
-import { Text, View, StyleSheet } from "react-native";
-import Header from "../components/Header";
-import Categories from "../components/Categories";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import Categories from '../components/Categories';
+import { colors } from '../global/colors';
 
-function Home({setCategorySelected}) {
+function Home({ navigation }) {
   return (
     <View style={styles.container}>
-      <Header title={"Categorias"}/>
-      <Categories setCategorySelected={setCategorySelected}/>
+      <Text style={styles.title}>Multitecno</Text>
+      <Text style={styles.subtitle}>Categorías</Text>
+      <Categories navigation={navigation} />
     </View>
   );
 }
 
-export default Home;
-
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#5E84F2', 
     flex: 1,
-    width: "100%",
-    alignItems: "center",
+    backgroundColor: colors.blue_200,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+    marginTop: 20, 
+  },
+  subtitle: {
+    fontSize: 20,
+    color: 'white',
+    marginBottom: 20, 
   },
 });
+
+export default Home;

@@ -1,35 +1,47 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, navigation }) => {
   return (
-    <View style={styles.card}>
-      <Image source={{ uri: product.imageUrl }} style={styles.image} />
-      <Text style={styles.text}>{product.name}</Text>
-    </View>
+    <Pressable style={styles.card} onPress={() => navigation.navigate('ItemDetail', { id: product.id, productName: product.name })}>
+      <View style={styles.cardContent}>
+        <Image
+          style={styles.image}
+          resizeMode='cover'
+          source={{ uri: product.imageUrl }}
+        />
+        <Text style={styles.title}>{product.name}</Text>
+      </View>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    flex: 1,
     alignItems: 'center',
     margin: 10,
     backgroundColor: '#fff',
     borderRadius: 10,
-    elevation: 3, 
+    elevation: 3,
     shadowRadius: 2,
     shadowOffset: { width: 0, height: 2 },
   },
+  cardContent: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+  },
   image: {
     width: '100%',
-    height: 150,
-    borderTopLeftRadius: 10, 
+    aspectRatio: 16 / 9,
+    borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
-  text: {
-    margin: 10,
+  title: {
     fontSize: 18,
+    marginTop: 8,
+    color: 'black',
+    textAlign: 'center',
   },
 });
 
