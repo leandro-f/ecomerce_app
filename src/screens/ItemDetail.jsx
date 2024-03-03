@@ -1,48 +1,41 @@
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 import allProducts from "../data/products.json";
 import { colors } from "../global/colors";
-
-const ItemDetail = ({ route }) => {
+import Counter from "../components/Counter";
+const ItemDetail = ({ navigation, route }) => {
   const [product, setProduct] = useState(null);
   const { id } = route.params;
 
   useEffect(() => {
-    const productFound = allProducts.find((product) => product.id === id);
-    if (productFound) {
-      setProduct(productFound);
-    }
+    const productFinded = allProducts.find((product) => product.id === id);
+    setProduct(productFinded);
   }, [id]);
-
-  if (!product) {
-    return (
-      <View style={styles.loadingContainer}>
-        <Text>Cargando...</Text>
-      </View>
-    );
-  }
-
+  
   return (
     <View style={styles.main}>
-      <View style={styles.container}>
-        {product.imageUrl ? (
+      {product ? (
+        <View style={styles.container}>
           <Image
             source={{ uri: product.imageUrl }}
             style={styles.image}
             resizeMode="cover"
           />
-        ) : (
-          <Text>No image available</Text>
-        )}
-        <View style={styles.textContainer}>
-          <Text style={styles.descriptionText}>{product.name}</Text>
-          <Text style={styles.descriptionText}>{product.description}</Text>
-          <Text style={styles.descriptionTextPrice}>${product.price}</Text>
-          <Pressable style={styles.buy}>
-            <Text style={styles.buyText}>Buy now</Text>
-          </Pressable>
+          <View style={styles.textContainer}>
+            <Text style={styles.descriptionText}>{product.title}</Text>
+            <Text style={styles.descriptionText}>{product.description}</Text>
+            <Text style={styles.descriptionTextPrice}>${product.price}</Text>
+            <Counter />
+            <Pressable style={styles.buy}>
+              <Text style={styles.buyText}>Comprar</Text>
+            </Pressable>
+          </View>
         </View>
-      </View>
+      ) : (
+        <View>
+          <Text>Cargando...</Text>
+        </View>
+      )}
     </View>
   );
 };
@@ -54,11 +47,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
   },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   container: {
     flexDirection: "column",
     justifyContent: "flex-start",
@@ -66,10 +54,8 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   image: {
-    width: "90%",
-    aspectRatio: 16 / 9,
-    marginHorizontal: '5%',
-    borderRadius: 10,
+    width: "100%",
+    height: 400,
     marginVertical: 15,
   },
   textContainer: {

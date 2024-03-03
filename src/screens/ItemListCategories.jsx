@@ -1,24 +1,23 @@
 import { useEffect, useState } from "react";
-import { View, FlatList, StyleSheet, Text, Pressable } from "react-native";
-import allProducts from "../data/products.json";
+import { View, FlatList, StyleSheet } from "react-native";
 import ProductItem from "../components/ProductItem";
 import Search from "../components/Search";
+import { useSelector } from "react-redux";
 
-function ItemListCategories({ navigation, route }) {
-  const { category } = route.params;
+function ItemListCategories({ navigation }) {
   const [products, setProducts] = useState([]);
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState("");
+  const productsFilteredByCategory = useSelector(
+    (state) => state.shopReducer.value.productsFilteredByCategory
+  );
 
   useEffect(() => {
 
-    const filteredProducts = allProducts.filter((product) => {
-      return (
-        product.category === category &&
-        product.name.toLowerCase().includes(keyword.toLowerCase())
-      );
-    });
-    setProducts(filteredProducts);
-  }, [category, keyword]);
+    const productsFiltered = productsFilteredByCategory.filter((product) =>
+      product.title.toLowerCase().includes(keyword.toLowerCase())
+    );
+    setProducts(productsFiltered);
+  }, [productsFilteredByCategory, keyword]);
 
   return (
     <View style={styles.container}>
@@ -26,21 +25,20 @@ function ItemListCategories({ navigation, route }) {
       <FlatList
         data={products}
         renderItem={({ item }) => <ProductItem product={item} navigation={navigation} />}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()} 
       />
     </View>
   );
 }
 
 export default ItemListCategories;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10,
-    
-  },
-  list: {
-    width: '100%',
+    width: "100%",
+    paddingHorizontal: 20,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
-

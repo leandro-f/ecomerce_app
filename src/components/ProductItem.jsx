@@ -3,46 +3,52 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 const ProductItem = ({ product, navigation }) => {
   return (
-    <Pressable style={styles.card} onPress={() => navigation.navigate('ItemDetail', { id: product.id, productName: product.name })}>
-      <View style={styles.cardContent}>
+    <View style={styles.card}>
+      <Pressable onPress={() => navigation.navigate('ItemDetail', { id: product.id })}>
         <Image
           style={styles.image}
           resizeMode='cover'
           source={{ uri: product.imageUrl }}
         />
-        <Text style={styles.title}>{product.name}</Text>
-      </View>
-    </Pressable>
+        <Text style={styles.title}>{product.title}</Text>
+      </Pressable>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    alignItems: 'center',
-    margin: 10,
     backgroundColor: '#fff',
     borderRadius: 10,
+    marginVertical: 8,
+
+    marginHorizontal: 12,
+    overflow: 'hidden',
     elevation: 3,
     shadowRadius: 2,
     shadowOffset: { width: 0, height: 2 },
-  },
-  cardContent: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    width: '100%',
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
   },
   image: {
-    width: '100%',
-    aspectRatio: 16 / 9,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    width: '100%', 
+    height: 200,
   },
   title: {
     fontSize: 18,
-    marginTop: 8,
+    fontWeight: 'bold',
+    padding: 10,
     color: 'black',
-    textAlign: 'center',
+    textAlign: 'center' 
+  },
+
+  description: {
+    fontSize: 14,
+    padding: 10,
+    paddingBottom: 15,
+    color: '#333',
   },
 });
+
 
 export default ProductItem;

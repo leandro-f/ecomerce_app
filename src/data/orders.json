@@ -1,0 +1,31 @@
+[
+  {
+    "id": "order-1",
+    "userId": "user-123",
+    "createdAt": "2024-02-29T12:34:56.000Z",
+    "items": [
+      {
+        "id": "smartphone-1",
+        "title": "Galaxy S21 Ultra",
+        "description": "Smartphone de alta gama con cámara profesional y pantalla AMOLED de 120Hz.",
+        "price": 999,
+        "quantity": 1
+      },
+      {
+        "id": "laptop-1",
+        "title": "MacBook Pro 14",
+        "description": "Potente laptop con chip M1 Pro, pantalla Liquid Retina XDR y hasta 17 horas de batería.",
+        "price": 1999,
+        "quantity": 1
+      },
+      {
+        "id": "consola-1",
+        "title": "PlayStation 5",
+        "description": "La última consola de Sony con gráficos impresionantes y carga rápida de juegos.",
+        "price": 499,
+        "quantity": 1
+      }
+    ],
+    "total": 3497
+  }
+]

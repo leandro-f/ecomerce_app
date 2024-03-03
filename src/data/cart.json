@@ -1,0 +1,40 @@
+[
+  {
+    "id": 50,
+    "title": "MacBook Pro 14",
+    "description": "Potente laptop con chip M1 Pro, pantalla Liquid Retina XDR y hasta 17 horas de batería.",
+    "price": 36,
+    "discountPercentage": 16.87,
+    "rating": 4.33,
+    "stock": 46,
+    "brand": "Arrivals Genuine",
+    "category": "womens-shoes",
+    "thumbnail": "https://i.dummyjson.com/data/products/50/thumbnail.jpg",
+    "images": [
+      "https://i.dummyjson.com/data/products/50/1.jpeg",
+      "https://i.dummyjson.com/data/products/50/2.jpg",
+      "https://i.dummyjson.com/data/products/50/3.jpg"
+    ],
+    "quantity": 2
+  },
+  {
+    "id": 66,
+    "title": "PlayStation 5",
+    "description": "La última consola de Sony con gráficos impresionantes y carga rápida de juegos.",
+    "price": 35,
+    "discountPercentage": 3.23,
+    "rating": 4.79,
+    "stock": 24,
+    "brand": "Eastern Watches",
+    "category": "womens-watches",
+    "thumbnail": "https://i.dummyjson.com/data/products/66/thumbnail.jpg",
+    "images": [
+      "https://i.dummyjson.com/data/products/66/1.jpg",
+      "https://i.dummyjson.com/data/products/66/2.jpg",
+      "https://i.dummyjson.com/data/products/66/3.jpg",
+      "https://i.dummyjson.com/data/products/66/4.JPG",
+      "https://i.dummyjson.com/data/products/66/thumbnail.jpg"
+    ],
+    "quantity": 1
+  }
+]

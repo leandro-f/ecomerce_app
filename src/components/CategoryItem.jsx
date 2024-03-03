@@ -1,39 +1,40 @@
-import React from "react";
-import { Pressable, Text, StyleSheet } from "react-native";
-import { colors } from "../global/colors"; 
+import { Pressable, StyleSheet, Text } from "react-native";
+import Card from "./Card";
+import { useDispatch } from "react-redux";
+import { setCategorySelected } from "../features/shop/shopSlice";
+import { colors } from "../global/colors";
 
 const CategoryItem = ({ category, navigation }) => {
+  const dispatch = useDispatch()
+
   return (
     <Pressable
-      onPress={() => navigation.navigate("ItemListCategories", { category: category })}
-      style={styles.button} 
->
-  <Text style={styles.text}>{category}</Text>
-</Pressable>
+      onPress={() => {
+        dispatch(setCategorySelected(category))
+        navigation.navigate("ItemListCategories", { category });
+      }}
+    >
+      <Card style={styles.cardContainer}>
+        <Text style={styles.text}>{category}</Text>
+      </Card>
+    </Pressable>
   );
 };
 
+export default CategoryItem;
+
 const styles = StyleSheet.create({
-  button: {
-    elevation: 3,
-    backgroundColor: colors.blue_300,
-    borderRadius: 20,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    marginVertical: 6,
-    alignItems: "center",
+  cardContainer: {
+    marginHorizontal: 30,
+    marginVertical: 10,
+    padding: 10,
     justifyContent: "center",
-    width: 250, 
-    shadowRadius: 4,
-    shadowOpacity: 0.3,
-    shadowColor: "#000",
-    shadowOffset: { height: 2, width: 0 },
+    alignItems: "flex-start",
+    backgroundColor: colors.blue_200,
+    borderRadius: 10,
   },
   text: {
-    color: "white",
-    fontSize: 18,
-    fontWeight: "bold",
+    fontFamily: "InterBold",
+    fontSize: 20,
   },
 });
-
-export default CategoryItem;

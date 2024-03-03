@@ -2,7 +2,7 @@
   {
     "category": "Smartphones",
     "id": "smartphone-1",
-    "name": "Galaxy S21 Ultra",
+    "title": "Galaxy S21 Ultra",
     "description": "Smartphone de alta gama con cámara profesional y pantalla AMOLED de 120Hz.",
     "price": 999,
     "imageUrl": "https://i.pinimg.com/564x/24/2f/99/242f990abf6d1fa3c320be337ad8155c.jpg"
@@ -10,7 +10,7 @@
   {
     "category": "Smartphones",
     "id": "smartphone-2",
-    "name": "iPhone 13 Pro",
+    "title": "iPhone 13 Pro",
     "description": "Dispositivo insignia de Apple con A15 Bionic chip, cámara triple y 5G.",
     "price": 1099,
     "imageUrl": "https://i.pinimg.com/564x/fd/ce/9e/fdce9ef3a8cb9f6d64f1a6c4cd2bf9da.jpg"
@@ -18,7 +18,7 @@
   {
     "category": "Smartphones",
     "id": "smartphone-3",
-    "name": "OnePlus 9 Pro",
+    "title": "OnePlus 9 Pro",
     "description": "Potente smartphone con carga rápida y sistema de cámara Hasselblad.",
     "price": 969,
     "imageUrl": "https://i.pinimg.com/564x/23/83/79/238379708e7e20b1d7422fe3c4c9e940.jpg"
@@ -26,7 +26,7 @@
   {
     "category": "Laptops",
     "id": "laptop-1",
-    "name": "MacBook Pro 14",
+    "title": "MacBook Pro 14",
     "description": "Potente laptop con chip M1 Pro, pantalla Liquid Retina XDR y hasta 17 horas de batería.",
     "price": 1999,
     "imageUrl": "https://i.pinimg.com/564x/61/4e/3c/614e3c99694894e5881dda883e894671.jpg"
@@ -34,7 +34,7 @@
   {
     "category": "Laptops",
     "id": "laptop-2",
-    "name": "Dell XPS 15",
+    "title": "Dell XPS 15",
     "description": "Laptop de alto rendimiento con pantalla InfinityEdge y tarjeta gráfica NVIDIA.",
     "price": 1850,
     "imageUrl": "https://i.pinimg.com/564x/52/9d/d8/529dd891775ff59e9a3a1c585d3248b9.jpg"
@@ -42,7 +42,7 @@
   {
     "category": "Laptops",
     "id": "laptop-3",
-    "name": "HP Spectre x360",
+    "title": "HP Spectre x360",
     "description": "Laptop convertible con pantalla táctil, lápiz incluido y gran seguridad.",
     "price": 1600,
     "imageUrl": "https://i.pinimg.com/564x/b7/b0/29/b7b029281712853988ac7ee9edbc993d.jpg"
@@ -50,7 +50,7 @@
   {
     "category": "Consolas y Videojuegos",
     "id": "consola-1",
-    "name": "PlayStation 5",
+    "title": "PlayStation 5",
     "description": "La última consola de Sony con gráficos impresionantes y carga rápida de juegos.",
     "price": 499,
     "imageUrl": "https://i.pinimg.com/564x/0d/e4/40/0de4400210ff9e7859aabed3ea1cb96c.jpg"
@@ -58,7 +58,7 @@
   {
     "category": "Consolas y Videojuegos",
     "id": "consola-2",
-    "name": "Xbox Series X",
+    "title": "Xbox Series X",
     "description": "Potente consola de Microsoft con retrocompatibilidad y rendimiento de próxima generación.",
     "price": 499,
     "imageUrl": "https://i.pinimg.com/564x/cd/ef/37/cdef37d49df388a45bb1137297b087e0.jpg"
@@ -66,7 +66,7 @@
   {
     "category": "Consolas y Videojuegos",
     "id": "consola-3",
-    "name": "Nintendo Switch",
+    "title": "Nintendo Switch",
     "description": "Consola híbrida que permite jugar en casa o en cualquier lugar con gran biblioteca de juegos.",
     "price": 299,
     "imageUrl": "https://i.pinimg.com/564x/1f/fb/ad/1ffbada7dbf252f6e253b2fba024ec84.jpg"
@@ -74,7 +74,7 @@
   {
     "category": "Redes y Almacenamiento",
     "id": "redes-1",
-    "name": "Router WiFi 6 TP-Link Archer AX6000",
+    "title": "Router WiFi 6 TP-Link Archer AX6000",
     "description": "Router de alta velocidad con tecnología WiFi 6 y seguridad avanzada.",
     "price": 350,
     "imageUrl": "https://i.pinimg.com/564x/db/58/73/db58733cc9877b061ac7f96f37f4ca49.jpg"
@@ -82,7 +82,7 @@
   {
     "category": "Redes y Almacenamiento",
     "id": "redes-2",
-    "name": "NAS Synology DS220+",
+    "title": "NAS Synology DS220+",
     "description": "Solución de almacenamiento en red para el hogar y pequeñas oficinas, con capacidad de expansión.",
     "price": 300,
     "imageUrl": "https://i.pinimg.com/564x/6a/21/f6/6a21f62c6c7227b5bce9040cafe1b05f.jpg"
@@ -90,7 +90,7 @@
   {
     "category": "Redes y Almacenamiento",
     "id": "redes-3",
-    "name": "Disco duro externo WD My Book 8TB",
+    "title": "Disco duro externo WD My Book 8TB",
     "description": "Gran capacidad de almacenamiento con protección mediante contraseña y hardware de cifrado.",
     "price": 200,
     "imageUrl": "https://i.pinimg.com/564x/e9/7d/fb/e97dfbacef550bcf8f728ffd902294ce.jpg"
@@ -98,7 +98,7 @@
   {
     "category": "Impresoras",
     "id": "impresora-1",
-    "name": "HP LaserJet Pro M15w",
+    "title": "HP LaserJet Pro M15w",
     "description": "Impresora láser compacta y eficiente con impresión móvil y calidad profesional.",
     "price": 120,
     "imageUrl": "https://i.pinimg.com/564x/cb/09/a7/cb09a7a118204d2b4d2677ec565c0adc.jpg"
@@ -106,7 +106,7 @@
   {
     "category": "Impresoras",
     "id": "impresora-2",
-    "name": "Epson EcoTank L3150",
+    "title": "Epson EcoTank L3150",
     "description": "Impresora multifuncional con sistema de tanque de tinta, económica y ecológica.",
     "price": 220,
     "imageUrl": "https://i.pinimg.com/564x/8d/26/fc/8d26fc142a4c0165cd3320755f95ae13.jpg"
@@ -114,7 +114,7 @@
   {
     "category": "Impresoras",
     "id": "impresora-3",
-    "name": "Canon Pixma MG2550S",
+    "title": "Canon Pixma MG2550S",
     "description": "Impresora versátil para documentos y fotos con fácil configuración y uso.",
     "price": 100,
     "imageUrl": "https://i.pinimg.com/564x/70/45/78/7045783560613593e9acb18dd1628cb5.jpg"
@@ -122,7 +122,7 @@
   {
     "category": "Monitores",
     "id": "monitor-1",
-    "name": "Dell UltraSharp UP3218K",
+    "title": "Dell UltraSharp UP3218K",
     "description": "Monitor 8K de 32 pulgadas con amplia cobertura de color y detalles excepcionales.",
     "price": 3800,
     "imageUrl": "https://i.pinimg.com/564x/62/b6/5e/62b65e95d56c4154fbf476a5bd4a1c8d.jpg"
@@ -130,7 +130,7 @@
   {
     "category": "Monitores",
     "id": "monitor-2",
-    "name": "LG UltraGear 27GL850",
+    "title": "LG UltraGear 27GL850",
     "description": "Monitor gaming QHD de 27 pulgadas con tiempo de respuesta de 1ms y G-SYNC.",
     "price": 500,
     "imageUrl": "https://i.pinimg.com/564x/c6/a4/4b/c6a44bc0db809e77677d92e4dfd8914b.jpg"
@@ -138,7 +138,7 @@
   {
     "category": "Monitores",
     "id": "monitor-3",
-    "name": "Samsung Odyssey G9",
+    "title": "Samsung Odyssey G9",
     "description": "Monitor curvo gaming de 49 pulgadas con DQHD, tasa de refresco de 240Hz y HDR1000.",
     "price": 1400,
     "imageUrl": "https://i.pinimg.com/564x/64/20/55/642055b9a640834a0f9d9d76c6466766.jpg"
