@@ -1,54 +1,75 @@
-import React from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from "react";
+import { Image, Pressable, StyleSheet, Text, useWindowDimensions } from "react-native";
+import Card from "./Card";
 
 const ProductItem = ({ product, navigation }) => {
+  const [isPortrait, setIsPortrait] = useState(true);
+  const [isLandscape, setIsLandscape] = useState(false);
+
+  const { width, height } = useWindowDimensions();
+
+  console.log(width, height);
+
+  useEffect(() => {
+    if (height > width) {
+      setIsPortrait(true);
+      setIsLandscape(false);
+    } else {
+      setIsPortrait(false);
+      setIsLandscape(true);
+    }
+  }, [width, height]);
+
   return (
-    <View style={styles.card}>
-      <Pressable onPress={() => navigation.navigate('ItemDetail', { id: product.id })}>
-        <Image
-          style={styles.image}
-          resizeMode='cover'
-          source={{ uri: product.imageUrl }}
-        />
-        <Text style={styles.title}>{product.title}</Text>
+    <>
+      <Pressable style={styles.card} onPress={() => navigation.navigate("ItemDetail", {id: product.id})}>
+        <Card
+          style={{
+            marginVertical: 20,
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <Text style={width < 350 ? styles.textMin : styles.text}>{product.title}</Text>
+          <Image
+            style={styles.image}
+            resizeMode="cover"
+            source={{ uri: product.thumbnail }}
+          />
+        </Card>
       </Pressable>
-    </View>
+    </>
   );
 };
 
+export default ProductItem;
+
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
+    height: 100,
+    padding: 20,
+    margin: 15,
+    borderWidth: 2,
     borderRadius: 10,
-    marginVertical: 8,
-
-    marginHorizontal: 12,
-    overflow: 'hidden',
-    elevation: 3,
-    shadowRadius: 2,
-    shadowOffset: { width: 0, height: 2 },
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: 4
   },
   image: {
-    width: '100%', 
-    height: 200,
+    minHeight: 90,
+    minWidth: 90,
+    width: "30%",
+    borderRadius: 5,
   },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    padding: 10,
-    color: 'black',
-    textAlign: 'center' 
+  text: {
+    width: "70%",
+    fontFamily: "InterRegular",
+    fontSize: 20,
   },
-
-  description: {
-    fontSize: 14,
-    padding: 10,
-    paddingBottom: 15,
-    color: '#333',
+  textMin: {
+    width: "70%",
+    fontFamily: "InterRegular",
+    fontSize: 15,
   },
 });
-
-
-export default ProductItem;

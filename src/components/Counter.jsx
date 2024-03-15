@@ -9,21 +9,23 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Counter = () => {
   const count = useSelector((state) => state.counterReducer.value);
-  const dispatch = useDispatch();
+
+  const dispatch = useDispatch()
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => dispatch(decrement())} style={styles.button}>
-        <Text style={styles.buttonText}>-</Text>
-      </Pressable>
-      <Text style={styles.countText}>{count}</Text>
-      <Pressable onPress={() => dispatch(increment())} style={styles.button}>
-        <Text style={styles.buttonText}>+</Text>
-      </Pressable>
+      <View style={styles.buttonsContainer}>
+        <Pressable  onPress={()=> dispatch(decrement())} style={styles.button}>
+          <Text style={styles.buttonText}>-</Text>
+        </Pressable>
+        <Text>{count}</Text>
+        <Pressable onPress={()=> dispatch(increment())} style={styles.button}>
+          <Text style={styles.buttonText}>+</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
-
 
 export default Counter;
 
