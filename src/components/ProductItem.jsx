@@ -1,44 +1,22 @@
-import { useEffect, useState } from "react";
-import { Image, Pressable, StyleSheet, Text, useWindowDimensions } from "react-native";
-import Card from "./Card";
+import React from 'react';
+import { Image, Pressable, StyleSheet, Text } from 'react-native';
+import Card from './Card';
 
 const ProductItem = ({ product, navigation }) => {
-  const [isPortrait, setIsPortrait] = useState(true);
-  const [isLandscape, setIsLandscape] = useState(false);
-
-  const { width, height } = useWindowDimensions();
-
-  console.log(width, height);
-
-  useEffect(() => {
-    if (height > width) {
-      setIsPortrait(true);
-      setIsLandscape(false);
-    } else {
-      setIsPortrait(false);
-      setIsLandscape(true);
-    }
-  }, [width, height]);
-
   return (
-    <>
-      <Pressable style={styles.card} onPress={() => navigation.navigate("ItemDetail", {id: product.id})}>
-        <Card
-          style={{
-            marginVertical: 20,
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}
-        >
-          <Text style={width < 350 ? styles.textMin : styles.text}>{product.title}</Text>
-          <Image
-            style={styles.image}
-            resizeMode="cover"
-            source={{ uri: product.thumbnail }}
-          />
-        </Card>
-      </Pressable>
-    </>
+    <Pressable 
+      style={styles.card} 
+      onPress={() => navigation.navigate('ItemDetail', { id: product.id })}
+    >
+      <Card style={styles.cardContent}>
+        <Image 
+          style={styles.image} 
+          resizeMode="cover" 
+          source={{ uri: product.imageUrl }} 
+        />
+        <Text style={styles.title}>{product.title}</Text>
+      </Card>
+    </Pressable>
   );
 };
 
@@ -46,30 +24,28 @@ export default ProductItem;
 
 const styles = StyleSheet.create({
   card: {
-    height: 100,
-    padding: 20,
-    margin: 15,
-    borderWidth: 2,
-    borderRadius: 10,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: 4
+    backgroundColor: '#fff',
+    marginVertical: 10,
+    marginHorizontal: 10,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    shadowRadius: 1,
+    overflow: 'hidden',
+  },
+  cardContent: {
+    alignItems: 'center',
+    backgroundColor: 'transparent',
   },
   image: {
-    minHeight: 90,
-    minWidth: 90,
-    width: "30%",
-    borderRadius: 5,
+    width: '100%',
+    height: 150,
   },
-  text: {
-    width: "70%",
-    fontFamily: "InterRegular",
-    fontSize: 20,
-  },
-  textMin: {
-    width: "70%",
-    fontFamily: "InterRegular",
-    fontSize: 15,
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    padding: 10,
   },
 });

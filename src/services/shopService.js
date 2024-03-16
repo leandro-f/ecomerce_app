@@ -56,5 +56,6 @@ export const {
   useGetProductsByCategoryQuery,
   useGetCategoriesQuery,
   useGetProductByIdQuery,
-  usePostOrderMutation
+  usePostOrderMutation,
+  useGetProfileImageQuery,usePostProfileImageMutation
 } = shopApi;

@@ -17,19 +17,27 @@ const ItemDetail = ({ navigation, route }) => {
   }
 
   useEffect(() => {
-    const productFinded = allProducts.find((product) => product.id === id);
-    setProduct(productFinded);
+    const productFound = allProducts.find((product) => product.id === id);
+    if (!productFound) {
+      console.error('Product not found');
+      navigation.goBack(); 
+    } else {
+      setProduct(productFound);
+    }
   }, [id]);
+  
 
   return (
     <View style={styles.main}>
       {product ? (
         <View style={styles.container}>
           <Image
-            source={{ uri: product.images[0] }}
-            style={styles.image}
-            resizeMode="cover"
-          />
+  source={{ uri: product?.imageUrl }} 
+  style={styles.image}
+  resizeMode="cover"
+  onError={(e) => { console.log('Error loading image:', e.nativeEvent.error); }}
+/>
+
           <View style={styles.textContainer}>
             <Text style={styles.descriptionText}>{product.title}</Text>
             <Text style={styles.descriptionText}>{product.description}</Text>

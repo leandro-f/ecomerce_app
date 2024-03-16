@@ -6,7 +6,6 @@ import { useGetCategoriesQuery } from "../services/shopService";
 
 
 function Categories({ navigation }) {
-/*   const categories = useSelector((state) => state.shopReducer.value.categories); */
   const { data, isLoading, error } = useGetCategoriesQuery();
 
   return (

@@ -12,6 +12,16 @@ export const authApi = createApi({
                 body: auth,
             })
         }),
+        portPrifeluImage: builder.mutation({
+            query: ({localId, image})=>({
+                url: `ruta-a-tu-endpoint?key=${api_key}`,
+                method: 'POST',
+                body:{
+                    localId,
+                    image,
+                }
+            })
+        }),
         login: builder.mutation({
             query: ({...auth}) => ({
                 url: `accounts:signInWithPassword?key=${api_key}`,
