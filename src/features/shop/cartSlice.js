@@ -5,45 +5,50 @@ export const cartSlice = createSlice({
   initialState: {
     value: {
       user: "userLogged",
-      updatedAt: new Date().toISOString(),
-      total: 0,
+      updatedAt: new Date().toLocaleString(),
+      total: null,
       items: [],
     },
   },
   reducers: {
     addItem: (state, action) => {
-      const index = state.value.items.findIndex(
+      const productRepeated = state.value.items.find(
         (item) => item.id === action.payload.id
       );
-      
-      if (index !== -1) {
-        state.value.items[index].quantity += 1;
-      } else {
-        const newItem = { ...action.payload, quantity: 1 };
-        state.value.items.push(newItem);
-      }
-
-      state.value.total = state.value.items.reduce(
-        (total, item) => total + item.price * item.quantity,
-        0
-      );
-      state.value.updatedAt = new Date().toISOString();
-    },
-    removeItem: (state, action) => {
-      const index = state.value.items.findIndex(
-        (item) => item.id === action.payload
-      );
-
-      if (index !== -1) {
-        state.value.items.splice(index, 1);
-        state.value.total = state.value.items.reduce(
-          (total, item) => total + item.price * item.quantity,
+      if (productRepeated) {
+        const itemsUpdated = state.value.items.map((item) => {
+          if (item.id === action.payload.id) {
+            item.quantity += action.payload.quantity;
+            return item;
+          }
+          return item;
+        });
+        const total = itemsUpdated.reduce(
+          (acc, currentItem) => (acc += currentItem.price * currentItem.quantity),
           0
         );
-        state.value.updatedAt = new Date().toISOString();
+        state.value = {
+          ...state.value,
+          items: itemsUpdated,
+          total,
+          updatedAt: new Date().toLocaleString(),
+        };
+      } else {
+        state.value.items.push(action.payload);
+        const total = state.value.items.reduce(
+          (acc, currentItem) => (acc += currentItem.price * currentItem.quantity),
+          0
+        );
+        state.value = {
+          ...state.value,
+          total,
+          updatedAt: new Date().toLocaleString(),
+        };
       }
     },
-
+    removeItem: (state, action) => {
+      //Logica para remover el producto
+    },
   },
 });
 

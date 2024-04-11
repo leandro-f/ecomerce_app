@@ -6,13 +6,14 @@ import { Entypo } from "@expo/vector-icons";
 const Search = ({ onSearch }) => {
   const [input, setInput] = useState("");
 
+  // handleSearch va a realizar un filtrado de los productos utilizando el valor guardado en "input"
   const handleSearch = () => {
     if (input) {
       onSearch(input);
     }
   };
 
-
+  //funcion que limpia el campo del input
   const removeInput = () => {
     setInput("");
   };
@@ -39,7 +40,6 @@ const Search = ({ onSearch }) => {
 
 export default Search;
 
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "90%",
+    width: "100%",
     paddingTop: 10,
   },
   input: {

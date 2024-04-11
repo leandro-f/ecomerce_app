@@ -1,24 +1,26 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { base_url } from '../firebase/dataBase';
+import { base_url } from "../firebase/database";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const shopApi = createApi({
-  reducerPath: 'shopApi',
+  reducerPath: "shopApi",
   baseQuery: fetchBaseQuery({ baseUrl: base_url }),
   endpoints: (builder) => ({
+    // getProducts: builder.query({
+    //     query: () => 'products.json'
+    // }),
     getProductsByCategory: builder.query({
       query: (category) => `products.json?orderBy="category"&equalTo="${category}"`,
     }),
     getCategories: builder.query({
-      query: () => 'categories.json',
+      query: () => "categories.json",
     }),
     postOrder: builder.mutation({
-      query: (order) => ({
+      query: ({ ...order }) => ({
         url: "orders.json",
         method: "POST",
         body: order,
       }),
     }),
-
     getProfileImage: builder.query({
       query: (localId) => `profileImages/${localId}.json`,
     }),
@@ -31,31 +33,13 @@ export const shopApi = createApi({
         },
       }),
     }),
-    getProductById: builder.query({
-
-      queryFn: async (id, queryApi, extraOptions, fetchWithBQ) => {
-  
-        const response = await fetchWithBQ('products.json');
-        if (response.error) {
-          return { error: response.error };
-        }
-
-        const allProducts = response.data;
-        const product = Object.values(allProducts).find((product) => product.id === id);
-        
-       
-        return product
-          ? { data: product }
-          : { error: new Error('Producto no encontrado') };
-      },
-    }),
   }),
 });
 
 export const {
   useGetProductsByCategoryQuery,
   useGetCategoriesQuery,
-  useGetProductByIdQuery,
   usePostOrderMutation,
-  useGetProfileImageQuery,usePostProfileImageMutation
+  useGetProfileImageQuery,
+  usePostProfileImageMutation,
 } = shopApi;

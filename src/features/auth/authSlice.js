@@ -4,7 +4,7 @@ export const authSlice = createSlice({
   name: "auth",
   initialState: {
     value: {
-      user: true,
+      user: null,
       token: null,
       imageCamera: null,
       localId: "Pepitoasdasdazz1414wfgsfsf",

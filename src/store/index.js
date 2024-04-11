@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { setupListeners } from "@reduxjs/toolkit/query/react";
 import counterReducer from "../features/counter/counterSlice";
 import shopReducer from "../features/shop/shopSlice";
 import cartReducer from "../features/shop/cartSlice";
 import authReducer from "../features/auth/authSlice";
 import { shopApi } from "../services/shopService";
+import { setupListeners } from "@reduxjs/toolkit/query";
 import { authApi } from "../services/authService";
 
-const store = configureStore({
+export default configureStore({
   reducer: {
     counterReducer,
     shopReducer,
@@ -20,6 +20,4 @@ const store = configureStore({
     getDefaultMiddleware().concat(shopApi.middleware).concat(authApi.middleware),
 });
 
-setupListeners(store.dispatch);
-
-export default store;
+setupListeners(configureStore.dispatch);

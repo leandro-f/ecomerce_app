@@ -5,7 +5,7 @@ import { useSignUpMutation } from "../services/authService";
 import SubmitButton from "../components/SubmitButton";
 import { useDispatch } from "react-redux";
 import { setUser } from "../features/auth/authSlice";
-import { signupSchema } from "../valifations/SingupSchema";
+import { signupSchema } from "../validation/SingupSchema";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +18,7 @@ const Signup = () => {
 
   const dispatch = useDispatch();
 
-
+  //console.log(result)
 
   const onSubmit = () => {
     console.log("mail", errorMail);
@@ -26,7 +26,7 @@ const Signup = () => {
     console.log("confirmPassword", errorConfirmPassword);
 
     try {
-
+      //limpiamos los errores cada vez que ejecutamos el Register
       setErrorMail("");
       setErrorPassword("");
       setErrorConfirmPassword("");
